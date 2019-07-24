@@ -1,4 +1,4 @@
-#include "xlnx_vdma_regctl"
+#include "xlnx_vdma_regctl.h"
 
 
 
@@ -113,7 +113,7 @@ int xlnx_vdma_regctl::set_soft_reset()
 	return 0;
 }
 
-int xlnx_vdma_regctl::set_vdma_channel_sample(u32 ddr_base, u32 width, u32 height, u32 bpp, int chan)
+int xlnx_vdma_regctl::set_vdma_channel_sample(u32 ddr_base, u32 width, u32 height, u32 bpp, u32 chan)
 {
 	int ret;
 	u32 reg = 0;
@@ -148,14 +148,14 @@ int xlnx_vdma_regctl::set_vdma_channel_sample(u32 ddr_base, u32 width, u32 heigh
 }
 
 
-u32 ctrl_offset(u32 chan, u32 offset)
+u32 xlnx_vdma_regctl::ctrl_offset(u32 chan, u32 offset)
 {
 	u32 reg = (chan == 0) ? XILINX_DMA_S2MM_CTRL_OFFSET : XILINX_DMA_MM2S_CTRL_OFFSET;
 	return (reg + offset);
 }
 
 
-u32 desc_offset(u32 chan, u32 offset)
+u32 xlnx_vdma_regctl::desc_offset(u32 chan, u32 offset)
 {
 	u32 reg = (chan == 0) ? XILINX_VDMA_S2MM_DESC_OFFSET : XILINX_VDMA_MM2S_DESC_OFFSET;
 	return (reg + offset);

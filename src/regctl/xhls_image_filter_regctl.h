@@ -3,6 +3,7 @@
 
 
 #include "libuio.h"
+#include "xhls_reg_common.h"
 
 class xhls_image_filter_regctl
 {

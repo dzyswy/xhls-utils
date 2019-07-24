@@ -1,11 +1,19 @@
 #include "xhls_image_filter_vdma.h"
+#include "libuio.h"
+#include "xhls_image_filter_regctl.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+
+
 
 
 #define HLS_IMAGE_FILTER_MAP_ID		1
 
 
 xhls_image_filter_vdma::xhls_image_filter_vdma(int width, int height, int bpp) 
-	: xlnx_vdma_loop(widht, height, bpp)
+	: xlnx_vdma_loop(width, height, bpp)
 {
 	 
 }

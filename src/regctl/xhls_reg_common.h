@@ -1,6 +1,8 @@
 #ifndef __XHLS_REG_COMMON_H
 #define __XHLS_REG_COMMON_H
 
+#define BIT(nr)			(1 << (nr))
+#define GENMASK(h, l)   ((((1) << ((h) - (l) + 1)) - 1) << (l))
 
 
 #define XHLS_REG_CTRL_START                     BIT(0)
@@ -20,6 +22,8 @@
 #define XHLS_REG_COLS                           0x18
 
 
+
+typedef unsigned int u32;
 
 
 

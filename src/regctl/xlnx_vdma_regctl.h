@@ -2,7 +2,7 @@
 #define __XLNX_VDMA_REGCTL_H
 
 #include "libuio.h"
-
+#include "xhls_reg_common.h"
 
 class xlnx_vdma_regctl
 {

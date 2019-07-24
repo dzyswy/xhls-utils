@@ -8,7 +8,7 @@
 #include        <time.h>
 #include        <sys/types.h>
 #include        <sys/mman.h>
-
+#include <unistd.h>
 
 class xlnx_udmabuf
 {
@@ -20,7 +20,7 @@ public:
 	
 protected:	
 	int get_phys_addr(unsigned long *phys_addr);
-	int get_size(unsigned long *size);
+	int get_size(unsigned int *size);
  
 protected:	
 	int dev_id_;

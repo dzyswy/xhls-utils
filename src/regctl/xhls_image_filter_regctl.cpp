@@ -44,7 +44,7 @@ int xhls_image_filter_regctl::set_restart(u32 value)
 	else
 		reg &= ~XHLS_REG_CTRL_AUTO_RESTART;
 	
-	ret = uio_write32(info_, map_, desc_offset(chan, XILINX_DMA_REG_FRMDLY_STRIDE), width * bpp);
+	ret = uio_write32(info_, map_, XHLS_IMAGE_FILTER_AXILITES_ADDR_AP_CTRL, reg);
 	if (ret < 0)
 		return -1;
 	
@@ -65,7 +65,7 @@ int xhls_image_filter_regctl::set_start(u32 value)
 	else
 		reg &= ~XHLS_REG_CTRL_START;
 	
-	ret = uio_write32(info_, map_, desc_offset(chan, XILINX_DMA_REG_FRMDLY_STRIDE), width * bpp);
+	ret = uio_write32(info_, map_, XHLS_IMAGE_FILTER_AXILITES_ADDR_AP_CTRL, reg);
 	if (ret < 0)
 		return -1;
 	

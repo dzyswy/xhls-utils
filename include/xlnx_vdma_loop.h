@@ -1,7 +1,8 @@
 #ifndef __XLNX_VDMA_LOOP_H
 #define __XLNX_VDMA_LOOP_H
 
-#include "xlnx_vdma_regctl.h"
+struct uio_info_t;
+class xlnx_vdma_regctl;
 
 
 
@@ -10,10 +11,10 @@ class xlnx_vdma_loop
 public:
 	xlnx_vdma_loop(int width, int height, int bpp);
 	virtual int open_device(const char *dev_name);
-	virtual int open_device(u32 base_addr);
+	virtual int open_device(unsigned int base_addr);
 	virtual int close_device();
 	
-	virtual int compute(u32 in_ddr, u32 out_ddr, int timeout);
+	virtual int compute(unsigned int in_ddr, unsigned int out_ddr, int timeout);
 
 protected:	
 	virtual int create_map_parts();

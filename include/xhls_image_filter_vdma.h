@@ -3,9 +3,9 @@
 
 
 #include "xlnx_vdma_loop.h"
-#include "xhls_image_filter_regctl.h"
 
 
+class xhls_image_filter_regctl;
 
 
 class xhls_image_filter_vdma : public xlnx_vdma_loop
