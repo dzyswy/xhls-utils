@@ -10,7 +10,7 @@ public:
 	xlnx_vdma_regctl(struct uio_info_t* info, int map);
 	int set_soft_reset();
 	int set_vdma_channel_sample(u32 ddr_base, u32 width, u32 height, u32 bpp, u32 chan);
-
+	int clear_irq_mask();
 
 protected:
 	u32 ctrl_offset(u32 chan, u32 offset);

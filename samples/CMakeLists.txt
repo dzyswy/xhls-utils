@@ -10,10 +10,15 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
 
 find_package(OpenCV REQUIRED)
 if(NOT OpenCV_FOUND)
-	message("Failed to find OpenCV!!!")
+	message("fail to find OpenCV")
 else()
 	include_directories(${OpenCV_INCLUDE_DIRS})
 #	SET(LIBS ${LIBS} ${OpenCV_LIBS})
+	message(STATUS "OpenCV library status:")
+	message(STATUS "    version: ${OpenCV_VERSION}")
+	message(STATUS "    include: ${OpenCV_INCLUDE_DIRS}")
+	message(STATUS "    library: ${OpenCV_INSTALL_PATH}")
+	message(STATUS "    libs: ${OpenCV_LIBS}")
 endif()
 
 
@@ -22,9 +27,12 @@ endif()
 
 ADD_EXECUTABLE(vdma-loop-demo vdma_loop_demo.cpp)
 TARGET_LINK_LIBRARIES(vdma-loop-demo 
-	${OpenCV_LIBS}
+	${OpenCV_LIBS} 
 	xhls)
+set_target_properties(vdma-loop-demo PROPERTIES 
+    ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib"
+    LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib"
+    RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")	
 	
-	
-#INSTALL(TARGETS stereo_demo DESTINATION bin)
+INSTALL(TARGETS vdma-loop-demo DESTINATION bin)
 

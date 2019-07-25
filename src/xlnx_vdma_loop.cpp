@@ -98,6 +98,12 @@ int xlnx_vdma_loop::compute(u32 in_ddr, u32 out_ddr, int timeout)
 		return -1;
 	}
 	
+	ret = xvmda->clear_irq_mask();
+	if (ret < 0) {
+		printf("xvmda->clear_irq_mask() error!\n");
+		return -1;
+	}
+	
 	return 0;
 }
 

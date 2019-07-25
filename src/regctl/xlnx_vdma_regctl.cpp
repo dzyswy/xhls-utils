@@ -101,14 +101,14 @@ xlnx_vdma_regctl::xlnx_vdma_regctl(struct uio_info_t* info, int map)
 
 int xlnx_vdma_regctl::set_soft_reset()
 {
-/*	int ret;
+	int ret;
 	ret = uio_set32(info_, map_, ctrl_offset(0, XILINX_DMA_REG_DMACR), XILINX_DMA_DMACR_RESET);
 	if (ret < 0)
 		return -1;
 	
 	ret = uio_set32(info_, map_, ctrl_offset(1, XILINX_DMA_REG_DMACR), XILINX_DMA_DMACR_RESET);
 	if (ret < 0)
-		return -1;*/
+		return -1;
 	
 	return 0;
 }
@@ -147,6 +147,27 @@ int xlnx_vdma_regctl::set_vdma_channel_sample(u32 ddr_base, u32 width, u32 heigh
 	return 0;
 }
 
+int xlnx_vdma_regctl::clear_irq_mask()
+{
+	int ret;
+	u32 reg = 0;
+	ret = uio_read32(info_, map_, ctrl_offset(0, XILINX_DMA_REG_DMASR), &reg);
+	if (ret < 0)
+		return -1;
+	reg = reg & XILINX_DMA_DMAXR_ALL_IRQ_MASK;
+	ret = uio_write32(info_, map_, ctrl_offset(0, XILINX_DMA_REG_DMASR), reg);
+	if (ret < 0)
+		return -1;
+	ret = uio_read32(info_, map_, ctrl_offset(1, XILINX_DMA_REG_DMASR), &reg);
+	if (ret < 0)
+		return -1;
+	reg = reg & XILINX_DMA_DMAXR_ALL_IRQ_MASK;
+	ret = uio_write32(info_, map_, ctrl_offset(1, XILINX_DMA_REG_DMASR), reg);
+	if (ret < 0)
+		return -1;
+	
+	return 0;
+}
 
 u32 xlnx_vdma_regctl::ctrl_offset(u32 chan, u32 offset)
 {
