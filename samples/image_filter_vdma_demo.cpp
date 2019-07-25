@@ -1,4 +1,4 @@
-#include "xlnx_vdma_loop.h"
+#include "xhls_image_filter_vdma.h"
 #include "xlnx_udmabuf.h"
 #include <opencv2/opencv.hpp>
 #include <errno.h>
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 	
 	void *image_virt[2]; unsigned long image_phys[2];
 	
-	xlnx_vdma_loop *xloop;
+	xhls_image_filter_vdma *xloop;
 	
 	
 	char filename[2048];
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
 			
 			printf("dma: 0x%lx 0x%lx\n", image_phys[0], image_phys[1]);
 			 
-			xloop = new xlnx_vdma_loop(width, height, 3);
+			xloop = new xhls_image_filter_vdma(width, height, 3);
 			ret = xloop->open_device(vdma_base);
 			if (ret < 0)
 				return -1; 

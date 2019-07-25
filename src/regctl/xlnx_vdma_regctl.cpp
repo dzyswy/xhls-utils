@@ -121,8 +121,10 @@ int xlnx_vdma_regctl::set_vdma_channel_sample(u32 ddr_base, u32 width, u32 heigh
 	if (ret < 0)
 		return -1;
 	reg |= XILINX_DMA_DMAXR_ALL_IRQ_MASK;
+	reg |= XILINX_DMA_DMACR_FRAMECNT_EN;
 	reg |= XILINX_DMA_DMACR_FRM_CNT_IRQ;
-	reg |= XILINX_DMA_DMACR_CIRC_EN;
+//	reg |= XILINX_DMA_DMACR_CIRC_EN;
+	reg &= ~XILINX_DMA_DMACR_CIRC_EN;
 	reg |= XILINX_DMA_DMACR_RUNSTOP;
 	ret = uio_write32(info_, map_, ctrl_offset(chan, XILINX_DMA_REG_DMACR), reg);
 	if (ret < 0)

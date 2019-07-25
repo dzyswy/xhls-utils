@@ -15,7 +15,7 @@ uio-utils
 
 
 # 编译
-cmake -DCMAKE_TOOLCHAIN_FILE=../mpsoc.cmake -DCMAKE_INSTALL_PREFIX=/work/mpsoc/src/xhls-utils/libxhls-mpsoc ..
+cmake -DCMAKE_TOOLCHAIN_FILE=../mpsoc.cmake -DCMAKE_INSTALL_PREFIX=/tftpboot/libxhls-mpsoc ..
 
 
 

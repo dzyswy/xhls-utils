@@ -29,10 +29,13 @@ ADD_EXECUTABLE(vdma-loop-demo vdma_loop_demo.cpp)
 TARGET_LINK_LIBRARIES(vdma-loop-demo 
 	${OpenCV_LIBS} 
 	xhls)
-set_target_properties(vdma-loop-demo PROPERTIES 
-    ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib"
-    LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib"
-    RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")	
+	
+ADD_EXECUTABLE(image-filter-vdma-demo image_filter_vdma_demo.cpp)
+TARGET_LINK_LIBRARIES(image-filter-vdma-demo 
+	${OpenCV_LIBS} 
+	xhls)	
+	
 	
 INSTALL(TARGETS vdma-loop-demo DESTINATION bin)
+INSTALL(TARGETS image-filter-vdma-demo DESTINATION bin)
 
